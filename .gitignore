@@ -16,6 +16,5 @@ DerivedData
 .idea/
 *.hmap
 *.xccheckout
-/Essencial/Essencial-Info.plist
 #CocoaPods
 Pods

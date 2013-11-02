@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Julian. All rights reserved.
 //
 
+#import "SCUI.h"
 #import "ViewController.h"
 
 @interface ViewController ()
@@ -13,6 +14,28 @@
 @end
 
 @implementation ViewController
+
+- (IBAction) login:(id) sender
+{
+    SCLoginViewControllerCompletionHandler handler = ^(NSError *error) {
+        if (SC_CANCELED(error)) {
+            NSLog(@"Canceled!");
+        } else if (error) {
+            NSLog(@"Error: %@", [error localizedDescription]);
+        } else {
+            NSLog(@"Done!");
+        }
+    };
+    
+    [SCSoundCloud requestAccessWithPreparedAuthorizationURLHandler:^(NSURL *preparedURL) {
+        SCLoginViewController *loginViewController;
+        
+        loginViewController = [SCLoginViewController
+                               loginViewControllerWithPreparedURL:preparedURL
+                               completionHandler:handler];
+        [self presentModalViewController:loginViewController animated:YES];
+    }];
+}
 
 - (void)viewDidLoad
 {

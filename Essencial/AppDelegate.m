@@ -6,9 +6,19 @@
 //  Copyright (c) 2013 Julian. All rights reserved.
 //
 
+#import "SCUI.h"
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+
++ (void) initialize
+{
+    NSString *clientID = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Sound Cloud Client ID"];
+    NSString *secret = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Sound Cloud Client Secret"];
+    [SCSoundCloud setClientID:clientID
+                       secret:secret
+                  redirectURL:[NSURL URLWithString:@"sampleproject://oauth"]];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

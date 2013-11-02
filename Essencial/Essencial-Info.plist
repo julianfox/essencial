@@ -30,6 +30,10 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>Sound Cloud Client ID</key>
+	<string>Your client ID</string>
+	<key>Sound Cloud Client Secret</key>
+	<string>Your client secret</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

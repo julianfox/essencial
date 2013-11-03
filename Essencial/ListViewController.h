@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ListViewController : UIViewController
+@interface ListViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
+@property (nonatomic, strong) NSArray *tracks;
+
+- (UIImage *)convertImageToGrayScale:(UIImage *)image;
 
 @end

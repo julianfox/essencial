@@ -792,6 +792,7 @@
 				B93C92041825AD2400130559 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B93C92051825AD2400130559 /* Build configuration list for PBXNativeTarget "EssencialTests" */ = {
 			isa = XCConfigurationList;
@@ -800,6 +801,7 @@
 				B93C92071825AD2400130559 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

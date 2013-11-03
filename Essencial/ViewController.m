@@ -7,7 +7,6 @@
 //
 
 #import "SCUI.h"
-#import "ListViewController.h"
 #import "ViewController.h"
 
 @interface ViewController ()
@@ -26,10 +25,7 @@
         } else {
             NSLog(@"Done!");
             
-            //ListViewController *listViewController = [[ListViewController alloc] init];
-            
             UIViewController *listViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"ListView"];
-            
             [self.navigationController pushViewController:listViewController animated:YES];
             
         }

@@ -7,6 +7,7 @@
 //
 
 #import "SCUI.h"
+#import "ListViewController.h"
 #import "ViewController.h"
 
 @interface ViewController ()
@@ -24,6 +25,13 @@
             NSLog(@"Error: %@", [error localizedDescription]);
         } else {
             NSLog(@"Done!");
+            
+            //ListViewController *listViewController = [[ListViewController alloc] init];
+            
+            UIViewController *listViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"ListView"];
+            
+            [self.navigationController pushViewController:listViewController animated:YES];
+            
         }
     };
     

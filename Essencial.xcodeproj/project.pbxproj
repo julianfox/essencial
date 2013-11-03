@@ -33,6 +33,7 @@
 		B93C924A1825AFCA00130559 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93C92491825AFCA00130559 /* QuartzCore.framework */; };
 		B93C924C1825AFD600130559 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93C924B1825AFD600130559 /* Security.framework */; };
 		B93C924E1825B06700130559 /* SoundCloud.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B93C924D1825B06700130559 /* SoundCloud.bundle */; };
+		B93C92511825C0AB00130559 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B93C92501825C0AB00130559 /* ListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +176,8 @@
 		B93C92491825AFCA00130559 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B93C924B1825AFD600130559 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B93C924D1825B06700130559 /* SoundCloud.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SoundCloud.bundle; sourceTree = "<group>"; };
+		B93C924F1825C0AB00130559 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		B93C92501825C0AB00130559 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +267,8 @@
 				B93C91E91825AD2400130559 /* ViewController.m */,
 				B93C91EB1825AD2400130559 /* Images.xcassets */,
 				B93C91DA1825AD2400130559 /* Supporting Files */,
+				B93C924F1825C0AB00130559 /* ListViewController.h */,
+				B93C92501825C0AB00130559 /* ListViewController.m */,
 			);
 			path = Essencial;
 			sourceTree = "<group>";
@@ -534,6 +539,7 @@
 			files = (
 				B93C91EA1825AD2400130559 /* ViewController.m in Sources */,
 				B93C91E41825AD2400130559 /* AppDelegate.m in Sources */,
+				B93C92511825C0AB00130559 /* ListViewController.m in Sources */,
 				B93C91E01825AD2400130559 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

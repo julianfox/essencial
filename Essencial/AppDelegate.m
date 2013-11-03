@@ -15,6 +15,7 @@
 {
     NSString *clientID = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Sound Cloud Client ID"];
     NSString *secret = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Sound Cloud Client Secret"];
+    
     [SCSoundCloud setClientID:clientID
                        secret:secret
                   redirectURL:[NSURL URLWithString:@"sampleproject://oauth"]];

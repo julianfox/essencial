@@ -17,6 +17,8 @@
 
 @implementation ListViewController
 
+SCAccount *account;
+
 - (UIImage *)convertImageToGrayScale:(UIImage *)image
 {
     // Create image rectangle with current image width/height
@@ -60,7 +62,7 @@
 {
     [super viewDidLoad];
 	
-    SCAccount *account = [SCSoundCloud account];
+    account = [SCSoundCloud account];
     NSLog(@"account %@", account);
     
     SCRequestResponseHandler handler;
@@ -118,8 +120,6 @@
     NSDictionary *track = [self.tracks objectAtIndex:indexPath.row];
     NSString *imageUrl = [track objectForKey:@"artwork_url"];
     
-    NSLog(@"image url %@", imageUrl);
-    
     if ( imageUrl != ( NSString *) [ NSNull null ] )
     {
         NSError *error = nil;
@@ -137,13 +137,64 @@
 }
 
 #pragma mark - UICollectionViewDelegate
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+- (void)collectionView:(UICollectionView *)cv didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    // TODO: Select Item
+    NSDictionary *track = [self.tracks objectAtIndex:indexPath.row];
+    
+    UICollectionViewCell *cell =[cv cellForItemAtIndexPath:indexPath];
+    UIImageView *cellImageView = cell.contentView.subviews[0];
+    
+    NSString *imageUrl = [track objectForKey:@"artwork_url"];
+    
+    if ( imageUrl != ( NSString *) [ NSNull null ] )
+    {
+        NSError *error = nil;
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl] options:NSDataReadingUncached error:&error];
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+        } else {
+            cellImageView.image = [UIImage imageWithData: imageData];
+        }
+    }
+
+    NSString *streamURL = [track objectForKey:@"stream_url"];
+    
+    [SCRequest performMethod:SCRequestMethodGET
+                  onResource:[NSURL URLWithString:streamURL]
+             usingParameters:nil
+                 withAccount:account
+      sendingProgressHandler:nil
+             responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                 NSError *playerError;
+                 self.player = [[AVAudioPlayer alloc] initWithData:data error:&playerError];
+                 [self.player prepareToPlay];
+                 [self.player play];
+             }];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Deselect item
+- (void)collectionView:(UICollectionView *)cv didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self.player stop];
+    
+    NSDictionary *track = [self.tracks objectAtIndex:indexPath.row];
+    
+    UICollectionViewCell *cell =[cv cellForItemAtIndexPath:indexPath];
+    UIImageView *cellImageView = cell.contentView.subviews[0];
+    
+    NSString *imageUrl = [track objectForKey:@"artwork_url"];
+    
+    if ( imageUrl != ( NSString *) [ NSNull null ] )
+    {
+        NSError *error = nil;
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl] options:NSDataReadingUncached error:&error];
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+        } else {
+            UIImage *greyImage = [self convertImageToGrayScale:[UIImage imageWithData: imageData]];
+            cellImageView.image = greyImage;
+        }
+    }
+
 }
 
 #pragma mark – UICollectionViewDelegateFlowLayout

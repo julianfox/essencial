@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface ListViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) NSArray *tracks;
+@property (nonatomic, strong) AVAudioPlayer *player;
 
 - (UIImage *)convertImageToGrayScale:(UIImage *)image;
 
